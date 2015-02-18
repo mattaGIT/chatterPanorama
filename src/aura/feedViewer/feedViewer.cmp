@@ -1,0 +1,56 @@
+<aura:component controller="feedViewer" implements="force:appHostable">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="type" type="String" default="News" description="The type of feed" access="GLOBAL"/>
+    <aura:attribute name="types" type="String[]"
+                    default="Bookmarks,Company,Files,Groups,Home,News,People"
+                    description="A list of feed types"/>
+    <aura:attribute name="subjectId" type="String" default="me"
+                    description="Id of record"/>
+    <aura:attribute name="isRecord" type="Boolean" default="false"/>
+    <aura:attribute name="objectSelected" type="Boolean" default="false"/>
+    <aura:attribute name="Object" type="String"/>
+   <h1>Chatter Feeds</h1>
+   <hr/>
+   <p/>
+   <div style="margin:20px;">
+       <div style="display:inline-block;width:50%;vertical-align:top;">
+   <ui:inputSelect aura:id="typeSelect" change="{!c.onChangeType}" label="Feed Type:  "/>
+ </div>
+</div>
+   <hr/>
+   <p/>
+    <aura:renderIf isTrue="{!v.isRecord}">
+    <div style="margin:20px;">
+        <div style="display:inline-block;width:50%;vertical-align:top;">
+            <!-- <code>ui:radioMenuItem</code> -->
+            <ui:menu>
+                <ui:menuTriggerLink aura:id="trigger" label="Select an object"/>
+                 <ui:menuList class="actionMenu" aura:id="actionMenu">
+                    <ui:actionMenuItem class="actionItem1" aura:id="actionItem1" label="Opportunity" click="{!c.updateTriggerLabel}"/>
+                    <ui:actionMenuItem class="actionItem2" aura:id="actionItem2" label="Contact" click="{!c.updateTriggerLabel}" disabled="true"/>
+                    <ui:actionMenuItem class="actionItem3" aura:id="actionItem3" label="Account" click="{!c.updateTriggerLabel}"/>
+                    <ui:actionMenuItem class="actionItem4" aura:id="actionItem4" label="User" click="{!c.updateTriggerLabel}"/>
+                </ui:menuList>
+            </ui:menu>
+           </div>
+    </div>
+  </aura:renderIf>
+  <aura:renderIf isTrue="{!v.objectSelected}">
+    <hr/>
+    <p/>
+    <div style="margin:20px;">
+        <div style="display:inline-block;width:50%;vertical-align:top;">
+
+      <ui:inputSelect aura:id="showAs" change="{!c.onChangeUser}" label="Show User Feed:  "/>
+
+    </div>
+  </div>
+  <hr/>
+  <p/>
+</aura:renderIf>
+
+    <div aura:id="feedContainer" class="feed-container">
+        <forceChatter:feed />
+    </div>
+
+</aura:component>

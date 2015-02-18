@@ -1,0 +1,3 @@
+<aura:component implements="force:appHostable">
+    <c:feedViewer type="Groups" types="Company,Files,Groups,News,People,Record"></c:feedViewer>
+</aura:component>

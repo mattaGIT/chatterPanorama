@@ -1,0 +1,18 @@
+{
+    "projectName": "light",
+    "username": "mckracken@silverlinecrm.com",
+    "id": "82564cf0-b24c-11e4-84ad-d7fcba01cd2a",
+    "namespace": "",
+    "environment": "developer",
+    "workspace": "/Users/hermione/atom",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "StaticResource",
+        "CustomObject",
+        "Profile"
+    ],
+    "password": "lightforc3"
+}
